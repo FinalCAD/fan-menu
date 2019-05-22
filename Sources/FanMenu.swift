@@ -329,11 +329,11 @@ class FanMenuScene {
         let node = Group(contents: contents)
         node.opacity = 0.0
         
-        node.onTouchPressed { [unowned fanMenu] _ in
-            fanMenu.onItemWillClick?(button)
+        node.onTouchPressed { [weak fanMenu] _ in
+            fanMenu?.onItemWillClick?(button)
             
-            fanMenu.scene?.updateState(open: false) {
-                fanMenu.onItemDidClick?(button)
+            fanMenu?.scene?.updateState(open: false) {
+                fanMenu?.onItemDidClick?(button)
             }
         }
         return node
